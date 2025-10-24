@@ -1,0 +1,17 @@
+---
+import skills from "@assets/skills.json";
+import Title from "./Title.astro";
+---
+
+<Title>
+	skills
+</Title>
+<ul class="flex flex-col gap-3">
+	{
+		skills.map((categorized_skills) => (
+			<li class="flex gap-1 flex-wrap">
+				<img class="" src={`https://skillicons.dev/icons?i=${categorized_skills.join(",")}`} />
+			</li>
+		))
+	}
+</ul>

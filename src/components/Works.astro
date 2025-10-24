@@ -1,0 +1,107 @@
+---
+import WorkCard from "@components/WorkCard.astro";
+import { undefined } from "astro:schema";
+import FeaturedWorkCard from "./FeaturedWorkCard.astro";
+import type { MarkdownInstance } from "astro";
+import Title from "./Title.astro";
+
+interface Work {
+	title: string;
+	pubDate: string;
+	description: string;
+	tags: string[];
+	thumbnail?: string;
+	github?: string;
+	site?: string;
+};
+
+interface Props {
+	selected_work?: string
+}
+
+const { selected_work } = Astro.props;
+
+const works = (
+		await Astro.glob("../pages/works/*.md")
+	)
+	.filter((w) => {
+		// exclude files starting with "_"
+		return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
+	});
+
+const thumbnails = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/*.png", { eager: true });
+works.forEach((work) => {
+	if(work.frontmatter.thumbnail == null) return;
+	const thumbnailPath = `/src/assets/works/${work.frontmatter.thumbnail}`;
+	if(!thumbnails[thumbnailPath]) {
+		throw new Error(`Thumbnail ${thumbnailPath} not found`);
+	}
+});
+const commonWorks = works.filter((work) => !work.frontmatter.featured);
+const featuredWorks = works.filter((work) => work.frontmatter.featured);
+---
+
+<div class="flex flex-col gap-4">
+	<div class="flex flex-wrap gap-2 justify-center">
+		{featuredWorks.map(
+			(work) => {
+				const work_card = (
+					<FeaturedWorkCard
+						title={work.frontmatter.title}
+						thumbnail={
+							work.frontmatter.thumbnail != null ?
+							thumbnails[`/src/assets/works/${work.frontmatter.thumbnail}`].default : null
+						}
+						description={work.frontmatter.description}
+						tags={work.frontmatter.tags}
+						always_selected={work.frontmatter.title === selected_work}
+					/>
+				);
+				if(work.frontmatter.title === selected_work) {
+					return (
+						<div>
+							{work_card}
+						</div>
+					);
+				}else {
+					return (
+						<a class="block" href={work.url}>
+							{work_card}
+						</a>
+					);
+				}
+			}
+		)}
+	</div>
+	<div class="flex flex-wrap gap-2 justify-center">
+		{commonWorks.map(
+			(work) => {
+				const work_card = (
+					<WorkCard
+						title={work.frontmatter.title}
+						thumbnail={
+							work.frontmatter.thumbnail != null ?
+							thumbnails[`/src/assets/works/${work.frontmatter.thumbnail}`].default : null
+						}
+						description={work.frontmatter.description}
+						tags={work.frontmatter.tags}
+						always_selected={work.frontmatter.title === selected_work}
+					/>
+				);
+				if(work.frontmatter.title === selected_work) {
+					return (
+						<div>
+							{work_card}
+						</div>
+					);
+				}else {
+					return (
+						<a class="block" href={work.url}>
+							{work_card}
+						</a>
+					);
+				}
+			}
+		)}
+	</div>
+</div>

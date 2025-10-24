@@ -1,0 +1,32 @@
+---
+import Footer from "@components/Footer.astro";
+import Background from "../components/Background.astro";
+import NavBar from "../components/NavBar.astro";
+import "../styles/global.css"
+
+interface Props {
+	pageTitle: string;
+}
+const { pageTitle } = Astro.props;
+
+import MyIcon from "@assets/myicon.png";
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href={MyIcon.src} />
+		<meta name="viewport" content="width=device-width initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle} | KNSN92's portfolio dayo</title>
+	</head>
+	<body class="bg-black text-white min-h-screen overflow-x-hidden overflow-y-scroll">
+		<Background />
+		<div class="flex min-h-screen">
+			<NavBar />
+			<div class="px-8 w-full h-screen overflow-scroll">
+				<slot />
+			</div>
+		</div>
+	</body>
+</html>

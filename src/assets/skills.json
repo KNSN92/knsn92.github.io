@@ -1,0 +1,47 @@
+[
+	[
+		"html",
+		"css",
+		"js",
+		"ts",
+		"py",
+		"java",
+		"nodejs",
+		"bun",
+		"rust"
+	],[
+		"git",
+		"npm",
+		"pnpm",
+		"vite",
+		"gradle",
+		"githubactions"
+	], [
+		"react",
+		"astro",
+		"tailwind",
+		"nextjs",
+		"tauri",
+		"prisma",
+		"bootstrap",
+		"django",
+		"opencv",
+		"sklearn",
+		"threejs"
+	], [
+		"vscode",
+		"idea",
+		"pycharm",
+		"eclipse",
+		"godot",
+		"arduino"
+	], [
+		"ai",
+		"ps",
+		"github",
+		"vercel"
+	], [
+		"apple",
+		"windows"
+	]
+]

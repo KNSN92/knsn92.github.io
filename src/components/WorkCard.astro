@@ -1,0 +1,43 @@
+---
+import Tag from "@components/Tag.astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+	title: string;
+	thumbnail?: ImageMetadata | null;
+	description: string;
+	tags: string[];
+	always_selected?: boolean;
+}
+
+const {
+	title,
+	thumbnail,
+	description,
+	tags,
+	always_selected,
+} = Astro.props;
+---
+
+<div class="relative w-80 flex flex-col gap-2 select-none group overflow-hidden bg-zinc-800/50">
+	<div class={
+		`absolute w-full h-full bg-white opacity-0 pointer-events-none transition ${always_selected ? ("opacity-20") : ("group-hover:opacity-20")}`
+	} />
+	{
+		thumbnail != null ? (
+			<Image alt={`thumbnail of ${title}`} src={thumbnail} class="pt-2 aspect-video object-contain" />
+		) : (
+			<div class="pt-2 aspect-video flex items-center justify-center text-2xl">のいまげ</div>
+		)
+	}
+	<div class="px-4">
+		<h1 class="text-3xl font-bold inline-block h-10 overflow-hidden">{title}</h1>
+		<p class="text-sm block h-20">{description}</p>
+		<div class="h-12 mb-4 flex flex-wrap justify-start *:mx-1">
+			{
+				tags && tags.map((tag: string) => <Tag tag={tag} />)
+			}
+		</div>
+	</div>
+</div>

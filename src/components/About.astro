@@ -1,0 +1,38 @@
+---
+import Title from "./Title.astro"
+
+const about = [
+	["name", "Kenshin Nakao"],
+	["nickname", "KNSN92 | コんタいナ"],
+	["age", "0x10 ( 17 years )"],
+	["location", "Hyogo, Japan"],
+	["hobby", "Gaming(Minecraft, Factorio, ...)"],
+]
+---
+
+<Title>about me</Title>
+<div class="text-left flex flex-col items-center">
+	<div class="flex w-fit space-y-4">
+		<ul>
+			{about.map(([key, _]) => (
+				<li>{key}</li>
+			))}
+		</ul>
+		<ul>
+			{about.map(() => (
+				<li class="w-8 text-center">-</li>
+			))}
+		</ul>
+		<ul>
+			{about.map(([_, value]) => (
+				<li>{value}</li>
+			))}
+		</ul>
+	</div>
+	<p>
+		プログラミングは趣味としてやっています！<br/>
+		最初はjavaから始まり、今ではpythonでツールを作ったり、<br/>
+		typescriptなどを使ってweb開発なども行っています。<br/>
+		現在rustを少しずつ学習中です。結構出来るようになってきた... かも？
+	</p>
+</div>
