@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownWorkLayout.astro
 title: テンプレ
-pubDate: 2025-10-24
+pubDate: 2025-10-25
 description: テンプレだよ。飛んでも404だよ
 tags: []
 thumbnail: dh2anvil.png
