@@ -15,18 +15,18 @@ const outer_links = {
 ---
 
 <nav class="w-64 h-screen pl-8 py-24 flex flex-col items-left justify-start gap-4">
-    <a href="/">
-        <Image src={MyIcon} alt="my icon" class="w-16 rounded-full" />
+    <a href="/" class="w-fit h-fit">
+        <Image src={MyIcon} alt="my icon" loading="eager" class="w-16 rounded-full" />
     </a>
     <ul class="*:mt-4 text-xl">
         {Object.entries(links).map(([name, link]) => (
-            <a class="block hover:underline w-fit" href={link}>
+            <a class="block hover:translate-x-2 hover:underline transition w-fit" href={link}>
                 <li>- {name}</li>
             </a>
         ))}
         {Object.entries(outer_links).map(([name, link]) => (
-            <a class="block hover:underline w-fit" href={link}>
-                <li>- {name} <Image src={OuterSite} alt="outer site icon" class="inline w-6 relative -top-0.5" /></li>
+            <a class="block hover:translate-x-2 hover:underline transition w-fit" href={link}>
+                <li>- {name} <Image src={OuterSite} alt="outer site icon" loading="eager" class="inline w-6 relative -top-0.5" /></li>
             </a>
         ))}
     </ul>

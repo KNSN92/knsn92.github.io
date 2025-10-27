@@ -1,6 +1,11 @@
 ---
 import skills from "@assets/skills.json";
 import Title from "./Title.astro";
+import { Image } from "astro:assets";
+
+// skill icons のデフォルトアイコンサイズ
+const ICON_SIZE = 48;
+const ICON_GAP = 8.25;
 ---
 
 <Title>
@@ -10,7 +15,10 @@ import Title from "./Title.astro";
 	{
 		skills.map((categorized_skills) => (
 			<li class="flex gap-1 flex-wrap">
-				<img class="" src={`https://skillicons.dev/icons?i=${categorized_skills.join(",")}`} />
+				<Image width={
+					ICON_SIZE * categorized_skills.length +
+					ICON_GAP * (categorized_skills.length - 1)
+				} height={ICON_SIZE} class="" src={`https://skillicons.dev/icons?i=${categorized_skills.join(",")}`} alt="skills" />
 			</li>
 		))
 	}

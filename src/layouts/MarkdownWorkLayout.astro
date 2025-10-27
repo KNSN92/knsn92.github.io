@@ -25,8 +25,8 @@ if(frontmatter.thumbnail != null) {
 
 <BaseLayout pageTitle={frontmatter.title}>
     <div class="w-full min-h-screen flex flex-col justify-between">
-        <div class="pt-12 mb-8 min-h-[50vh] flex flex-col md:flex-row-reverse">
-            <div class="md:max-w-192 md:w-[50%] md:ml-8">
+        <div class="pt-12 mb-8 min-h-[50vh] flex flex-col lg:flex-row-reverse">
+            <div class="lg:max-w-192 lg:w-[50%] lg:ml-8">
                 {
                     thumbnail != null ?
                     <Image class="w-full h-full object-contain aspect-video" alt={`${frontmatter.title}のサムネ`} src={thumbnail} fit="contain" /> :
