@@ -1,11 +1,9 @@
 ---
 import WorkCard from "@components/WorkCard.astro";
-import { undefined } from "astro:schema";
 import FeaturedWorkCard from "./FeaturedWorkCard.astro";
 import type { MarkdownInstance } from "astro";
-import Title from "./Title.astro";
 
-interface Work {
+export interface Work {
 	title: string;
 	pubDate: string;
 	description: string;
@@ -16,12 +14,13 @@ interface Work {
 };
 
 interface Props {
-	selected_work?: string
+	selected_work?: string,
+	works_override?: MarkdownInstance<Record<string, any>>[],
 }
 
-const { selected_work } = Astro.props;
+const { selected_work, works_override } = Astro.props;
 
-const works = (
+const works = works_override ?? (
 		await Astro.glob("../pages/works/*.md")
 	)
 	.filter((w) => {

@@ -8,6 +8,7 @@ import Works from "@components/Works.astro";
 
 import GithubIcon from "@assets/github.svg";
 import LinkIcon from "@assets/link.svg";
+import Title from "@components/Title.astro";
 
 const { frontmatter } = Astro.props;
 let thumbnail;
@@ -44,11 +45,15 @@ if(frontmatter.thumbnail != null) {
                     <slot />
                 </div>
                 <div class="flex gap-2">
-                    {frontmatter.tags.map((tag: string) => <Tag tag={tag} />)}
+                    {frontmatter.tags.map((tag: string) => <Tag tag={tag} link={true} />)}
                 </div>
                 <p>公開日: {frontmatter.pubDate.toString().slice(0, 10)}</p>
             </div>
         </div>
+        <Title>
+            他の作品
+        </Title>
+        <div class="h-8" />
         <Works selected_work={frontmatter.title} />
     </div>
 </BaseLayout>

@@ -1,4 +1,16 @@
 ---
-const { tag } = Astro.props;
+interface Props {
+  tag: string;
+  link?: boolean;
+}
+const { tag, link } = Astro.props;
 ---
-<span class="underline">{tag}</span>
+{
+  link ? (
+    <a href={`/tag/${tag.replace("/", "-")}`} class="underline">
+      #{tag}
+    </a>
+  ) : (
+    <span class="underline">#{tag}</span>
+  )
+}

@@ -1,0 +1,57 @@
+---
+import WorkCard from "@components/WorkCard.astro";
+import Works from "@components/Works.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { GetStaticPathsResult } from "astro";
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const works = (
+		await Astro.glob("../../pages/works/*.md")
+	)
+	.filter((w) => {
+		// exclude files starting with "_"
+		return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
+	});
+  const tags = [...new Set(
+    works.flatMap((work) => work.frontmatter.tags as string[])
+  )];
+  const r = tags.map((tag) => ({
+    params: { tag: tag.replace("/", "-") },
+    props: { tag }
+  }));
+  console.log(r);
+  return r;
+};
+
+interface Props {
+  tag: string,
+}
+
+const { tag } = Astro.props;
+
+const works = (
+  await Astro.glob("../../pages/works/*.md")
+)
+.filter((w) => (
+  // exclude files starting with "_"
+  !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
+))
+.filter((w) => (
+  w.frontmatter.tags.includes(tag)
+));
+
+const thumbnails = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/*.png", { eager: true });
+works.forEach((work) => {
+	if(work.frontmatter.thumbnail == null) return;
+	const thumbnailPath = `/src/assets/works/${work.frontmatter.thumbnail}`;
+	if(!thumbnails[thumbnailPath]) {
+		throw new Error(`Thumbnail ${thumbnailPath} not found`);
+	}
+});
+---
+
+<BaseLayout pageTitle={`タグ #${tag}`}>
+  <h1 class="my-8 text-center text-4xl font-bold">#{tag} のタグが付けられた作品</h1>
+    <Works works_override={works} />
+  </ul>
+</BaseLayout>
