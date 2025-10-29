@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const works = (
+  await Astro.glob("../pages/works/*.md")
+)
+.filter((w) => {
+  // exclude files starting with "_"
+  return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
+});
+const tags = [...new Set(
+  works.flatMap((work) => work.frontmatter.tags as string[])
+)];
+---
+<!-- TODO 検索バーを追加したい~ -->
+<BaseLayout pageTitle="タグ一覧">
+  <h1 class="py-8 text-center text-4xl font-bold">タグ一覧</h1>
+  <ul class="flex flex-wrap">
+    {tags.map((tag) => (
+      <li class="underline text-2xl text-nowrap mx-2">
+        <a href={`/tag/${tag.replace("/", "-")}`}>#{tag}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
