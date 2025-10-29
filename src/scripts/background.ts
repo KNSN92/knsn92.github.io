@@ -232,7 +232,7 @@ function setupBackground() {
         mouseSpeedY = 0;
         rotVelX = (rotVelX + 0.002) * 0.95 - 0.002;
         rotVelY = (rotVelY + 0.002) * 0.95 - 0.002;
-        // starVelocity = starVelocity.multiplyScalar(0.99);
+        // starVelocity = starVelocity.add(new THREE.Vector2(0.005, 0.005)).multiplyScalar(0.99).sub(new THREE.Vector2(0.005, 0.005));
 
         cube1.rotateX(rotVelX);
         cube1.rotateY(rotVelY);
@@ -241,7 +241,10 @@ function setupBackground() {
 
         rings.forEach((ringss, i) => {
             ringss.forEach((ring, j) => {
-                ring.rotateZ((rotVelX + rotVelY) * (i % 2 === 0 ? 1 : -1));
+                const ringGeom = ring.geometry as THREE.RingGeometry;
+                const r = ringGeom.parameters.innerRadius / 100;
+                const speed = 4 / (r * r)
+                ring.rotateZ((rotVelX + rotVelY) * speed * (i % 2 === 0 ? 1 : -1));
             });
         });
 
