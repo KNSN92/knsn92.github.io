@@ -1,20 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-// function setupBackground() {
-//     const bgCanvas = document.getElementById("bg-canvas") as HTMLCanvasElement;
-//     if (!bgCanvas) return;
-//     const ctx = bgCanvas.getContext("2d");
-//     if(!ctx) return;
-//     const width = bgCanvas.width;
-//     const height = bgCanvas.height;
-//     ctx.fillStyle = "#fff";
-//     ctx.font = "12px serif";
-//     ctx.fillText("何か置く", 0, height * 0.25);
-//     ctx.font = "9px serif";
-//     ctx.fillText("画質ガビガビや", 0, height * 0.75);
-// }
-
 function setupBackground() {
     const bgCanvas = document.getElementById("bg-canvas")! as HTMLCanvasElement;
     let width = window.innerWidth;
@@ -39,16 +25,7 @@ function setupBackground() {
     scene.add(ambientLight);
 
     let material;
-    const cubeGeom = new THREE.BoxGeometry(400, 400, 400);
-    material = new THREE.MeshPhongMaterial({ color: 0x00ffcc});
-    const cube1 = new THREE.Mesh(cubeGeom, material);
-    cube1.translateX(600);
-    // scene.add(cube1);
-    material = new THREE.MeshPhongMaterial({ color: 0x00ccff });
-    const cube2 = new THREE.Mesh(cubeGeom, material);
-    cube2.translateX(-600);
-    // scene.add(cube2);
-    
+
     const saturnLikeSys = new THREE.Group();
 
     material = new THREE.MeshPhongMaterial({ color: 0x00ccff, opacity: 0.8, transparent: true });
@@ -234,13 +211,8 @@ function setupBackground() {
         rotVelY = (rotVelY + 0.002) * 0.95 - 0.002;
         // starVelocity = starVelocity.add(new THREE.Vector2(0.005, 0.005)).multiplyScalar(0.99).sub(new THREE.Vector2(0.005, 0.005));
 
-        cube1.rotateX(rotVelX);
-        cube1.rotateY(rotVelY);
-        cube2.rotateX(rotVelX);
-        cube2.rotateY(rotVelY);
-
         rings.forEach((ringss, i) => {
-            ringss.forEach((ring, j) => {
+            ringss.forEach((ring) => {
                 const ringGeom = ring.geometry as THREE.RingGeometry;
                 const r = ringGeom.parameters.innerRadius / 100;
                 const speed = 4 / (r * r)
