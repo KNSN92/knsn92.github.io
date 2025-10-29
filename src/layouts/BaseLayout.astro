@@ -22,11 +22,12 @@ import MyIcon from "@assets/myicon.png";
 	</head>
 	<body class="bg-black text-white min-h-screen overflow-x-hidden overflow-y-scroll">
 		<Background />
-		<div class="flex min-h-screen">
+		<div class="sm:flex min-h-screen">
 			<NavBar />
-			<div class="px-8 w-full h-screen overflow-scroll">
+			<div class="px-8 w-full h-fit sm:h-screen sm:overflow-scroll">
 				<slot />
 			</div>
+			<Footer />
 		</div>
 	</body>
 </html>
