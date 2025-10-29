@@ -79,7 +79,7 @@ function setupBackground() {
     ring = new THREE.Mesh(ringGeom, material);
     rings.push([ring]);
     saturnLikeSys.add(ring);
-    material = new THREE.MeshPhongMaterial({ color: 0xffffff, opacity: 0.8, transparent: true });
+    material = new THREE.MeshPhongMaterial({ color: 0xff8888, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(400, 550, 45, 1, Math.PI * 0, Math.PI);
     ring = new THREE.Mesh(ringGeom, material);
     rings.at(-1)!.push(ring);
