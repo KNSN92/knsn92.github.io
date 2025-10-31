@@ -5,15 +5,16 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import type { GetStaticPathsResult } from "astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const works = (
-		await Astro.glob("../../pages/work/*.md")
-	)
+  const tag_pages = [
+    ...await Astro.glob("../../pages/work/*.md"),
+    ...await Astro.glob("../../pages/blog/*.md"),
+  ]
 	.filter((w) => {
 		// exclude files starting with "_"
 		return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
 	});
   const tags = [...new Set(
-    works.flatMap((work) => work.frontmatter.tags as string[])
+    tag_pages.flatMap((tag_page) => tag_page.frontmatter.tags as string[])
   )];
   const r = tags.map((tag) => ({
     params: { tag: tag.replace("/", "-") },

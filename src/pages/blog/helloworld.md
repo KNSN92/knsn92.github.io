@@ -1,4 +1,6 @@
 ---
+layout: "../../layouts/MarkdownBlogLayout.astro"
+title: HelloWorld!
 tags: ["helloworld"]
 ---
 
