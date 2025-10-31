@@ -6,7 +6,7 @@ import type { GetStaticPathsResult } from "astro";
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const works = (
-		await Astro.glob("../../pages/works/*.md")
+		await Astro.glob("../../pages/work/*.md")
 	)
 	.filter((w) => {
 		// exclude files starting with "_"
@@ -30,7 +30,7 @@ interface Props {
 const { tag } = Astro.props;
 
 const works = (
-  await Astro.glob("../../pages/works/*.md")
+  await Astro.glob("../../pages/work/*.md")
 )
 .filter((w) => (
   // exclude files starting with "_"

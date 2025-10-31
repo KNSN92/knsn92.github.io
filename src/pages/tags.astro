@@ -1,14 +1,17 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
+const tag_pages = [
+  ...await Astro.glob("../pages/work/*.md"),
 const works = (
   await Astro.glob("../pages/works/*.md")
 )
+]
 .filter((w) => {
   // exclude files starting with "_"
   return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
 });
-const all_tags = works.flatMap((work) => work.frontmatter.tags as string[]);
+const all_tags = tag_pages.flatMap((work) => work.frontmatter.tags as string[]);
 const tags: {[tag in string]: number} = {};
 for(const tag of all_tags) {
   if(tag in tags) {

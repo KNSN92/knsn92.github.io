@@ -21,7 +21,7 @@ interface Props {
 const { selected_work, works_override } = Astro.props;
 
 const works = works_override ?? (
-		await Astro.glob("../pages/works/*.md")
+		await Astro.glob("../pages/work/*.md")
 	)
 	.filter((w) => {
 		// exclude files starting with "_"

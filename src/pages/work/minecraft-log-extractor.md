@@ -10,4 +10,4 @@ github: https://github.com/KNSN92/
 
 minecraft java版のログファイル(ゲームディレクトリのlogsファイルの中のやつ)からチャット履歴を取り出すツールです。簡単な正規表現とかで実現できました。
 
-この後継として作ったのが[MC Log2Chat](/works/mc-log2chat)です。
+この後継として作ったのが[MC Log2Chat](/work/mc-log2chat)です。
