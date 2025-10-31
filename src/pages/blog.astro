@@ -3,7 +3,42 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 ---
 <BaseLayout pageTitle="blog">
-  <h1 class="mt-32 mx-auto w-fit text-6xl font-bold">
-    ｶﾞｶﾞｶﾞｶﾞｶﾞ... ﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞ...(工事音)
+  <h1 class="mt-32 mx-auto w-fit text-6xl font-bold *:inline-block vibrate-children">
+    <span>ｶﾞ</span>
+    <span>ｶﾞ</span>
+    <span>ｶﾞ</span>
+    <span>ｶﾞ</span>
+    <span>ｶﾞ</span>
+    <span>.</span>
+    <span>.</span>
+    <span>.</span>
+    <span> </span>
+    <span>ﾄﾞ</span>
+    <span>ﾄﾞ</span>
+    <span>ﾄﾞ</span>
+    <span>ﾄﾞ</span>
+    <span>ﾄﾞ</span>
+    <span>.</span>
+    <span>.</span>
+    <span>.</span>
+    (工事音)
   </h1>
 </BaseLayout>
+<style>
+
+  @keyframes vibration {
+    25% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    75% {
+      transform: translateY(5px);
+    }
+  }
+  
+  .vibrate-children > * {
+    animation: vibration 0.125s linear infinite;
+  }
+</style>
