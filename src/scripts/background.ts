@@ -76,14 +76,17 @@ function setupBackground() {
     // plane.position.set(0, 0, -200);
     // scene.add(plane);
 
+    const starWidth = width * 3;
+    const starHeight = height * 3;
+
     function genStarParticles() {
-        const len = Math.min(width / 6 + height / 4, 50000);
+        const len = Math.min(starWidth / 6 + starHeight / 4, 50000);
         let vertices: number[] = [];
         let colors: number[] = [];
         let comet: number[] = [];
         for(let i = 0; i < len; i++) {
-            const x = width * (Math.random() - 0.5) * 2;
-            const y = height * (Math.random() - 0.5) * 2;
+            const x = starWidth * (Math.random() - 0.5) * 2;
+            const y = starHeight * (Math.random() - 0.5) * 2;
             const z = -300 - 1600 * (Math.random());
             vertices.push(x, y, z);
     
@@ -144,6 +147,13 @@ function setupBackground() {
     });
     const points = new THREE.Points(bufferGeom, particleMaterial);
     scene.add(points);
+    
+    let mouseSpeedX = 0;
+    let mouseSpeedY = 0;
+    let lastX: number;
+    let lastY: number;
+    let starOffset = new THREE.Vector2(0, 0);
+    let starVelocity = new THREE.Vector2(Math.random() * 0.02, Math.random() * 0.02);
 
     function refreshCanvasSize() {
         width = window.innerWidth;
@@ -152,19 +162,13 @@ function setupBackground() {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
 
-        particleMaterial.uniforms["viewport"] = { value: new THREE.Vector2(width * 1.5, height * 1.5) };
+        starVelocity = new THREE.Vector2(Math.random() * 0.02, Math.random() * 0.02);
+        particleMaterial.uniforms["viewport"] = { value: new THREE.Vector2(starWidth, starHeight) };
         genStarParticles();
     }
 
     window.addEventListener("DOMContentLoaded", refreshCanvasSize);
     window.addEventListener("resize", refreshCanvasSize);
-    
-    let mouseSpeedX = 0;
-    let mouseSpeedY = 0;
-    let lastX: number;
-    let lastY: number;
-    let starOffset = new THREE.Vector2(0, 0);
-    let starVelocity = new THREE.Vector2(Math.random() * 0.02, Math.random() * 0.02);
 
     function onmove(e: MouseEvent | TouchEvent) {
         function getPos(e: MouseEvent | TouchEvent) {
