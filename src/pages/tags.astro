@@ -3,9 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 const tag_pages = [
   ...await Astro.glob("../pages/work/*.md"),
-const works = (
-  await Astro.glob("../pages/works/*.md")
-)
+  ...await Astro.glob("../pages/blogs/*.md"),
 ]
 .filter((w) => {
   // exclude files starting with "_"
