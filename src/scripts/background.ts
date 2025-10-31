@@ -7,7 +7,8 @@ function setupBackground() {
     let height = window.innerHeight;
 
     const renderer = new THREE.WebGLRenderer({
-        canvas: bgCanvas
+        canvas: bgCanvas,
+        antialias: true
     });
 
     const scene = new THREE.Scene();
