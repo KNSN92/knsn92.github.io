@@ -20,9 +20,9 @@ import MyIcon from "@assets/myicon.png";
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle} | KNSN92's portfolio dayo</title>
 	</head>
-	<body class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden">
+	<body class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden overflow-y-scroll">
 		<Background />
-		<div class="sm:flex max-w-screen min-h-screen overflow-y-scroll">
+		<div class="sm:flex max-w-screen min-h-screen">
 			<NavBar />
 			<div class="px-8 w-full h-fit sm:h-screen sm:overflow-scroll">
 				<slot />
