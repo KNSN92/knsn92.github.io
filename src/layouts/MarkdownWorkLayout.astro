@@ -30,7 +30,7 @@ if(frontmatter.thumbnail != null) {
             <div class="lg:max-w-192 lg:w-[50%] lg:ml-8">
                 {
                     thumbnail != null ?
-                    <Image class="w-full h-full object-contain aspect-video" alt={`${frontmatter.title}のサムネ`} src={thumbnail} fit="contain" /> :
+                    <Image class="w-full h-full object-contain aspect-video" alt={`${frontmatter.title}のサムネ`} src={thumbnail} fit="contain" loading="eager" /> :
                     <div class="aspect-video border-4 border-white/50 border-dashed flex items-center justify-center text-4xl">のいまげ</div>
                 }
             </div>
