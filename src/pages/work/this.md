@@ -7,5 +7,6 @@ tags: ["astro", "typescript", "three.js"]
 ---
 
 このポートフォリオだよ。three.jsで背景を派手に飾ってみたヨ。
+[旧ポートフォリオ](/work/legacy-portfolio)
 
 [背景で遊ぶだけのページを作ったよ](/startoy) << ココをクリック！

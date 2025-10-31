@@ -9,3 +9,4 @@ site: https://knsn92.github.io/legacy.knsn92.github.io/
 ---
 
 先代のポートフォリオです。途中のスキルのスクロール効果とか要らないなーとか色々思ったので作り直すことにしました。
+[今見てるポートフォリオ](/work/this)
