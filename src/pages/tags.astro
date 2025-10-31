@@ -8,17 +8,23 @@ const works = (
   // exclude files starting with "_"
   return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
 });
-const tags = [...new Set(
-  works.flatMap((work) => work.frontmatter.tags as string[])
-)];
+const all_tags = works.flatMap((work) => work.frontmatter.tags as string[]);
+const tags: {[tag in string]: number} = {};
+for(const tag of all_tags) {
+  if(tag in tags) {
+    tags[tag]++;
+  }else {
+    tags[tag] = 1;
+  }
+}
 ---
 <!-- TODO 検索バーを追加したい~ -->
 <BaseLayout pageTitle="タグ一覧">
   <h1 class="py-8 text-center text-4xl font-bold">タグ一覧</h1>
-  <ul class="flex flex-wrap">
-    {tags.map((tag) => (
-      <li class="underline text-2xl text-nowrap mx-2">
-        <a href={`/tag/${tag.replace("/", "-")}`}>#{tag}</a>
+  <ul class="mx-auto max-w-256 w-fit lg:grid lg:grid-cols-2">
+    {Object.keys(tags).map((tag) => (
+      <li class="my-1 lg:my-2w w-fit text-2xl text-nowrap mx-2">
+        <a href={`/tag/${tag.replace("/", "-")}`} class="underline">#{tag}</a> - {tags[tag]}ページ
       </li>
     ))}
   </ul>
