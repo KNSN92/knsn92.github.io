@@ -1,20 +1,21 @@
 ---
-import type { ImageMetadata } from "astro"
-import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 interface Props {
-    image: ImageMetadata,
-    url: string,
-    name: string
+  image: ImageMetadata;
+  url: string;
+  name: string;
 }
 
-const {
-    image,
-    url,
-    name,
-} = Astro.props
+const { image, url, name } = Astro.props;
 ---
 
 <a href={url} class="block h-full aspect-square">
-    <Image src={image} alt={name} class="h-full w-fit text-white" />
+  <Image
+    src={image}
+    alt={name}
+    loading="eager"
+    class="h-full w-fit text-white"
+  />
 </a>
