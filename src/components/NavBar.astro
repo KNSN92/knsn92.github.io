@@ -4,35 +4,68 @@ import OuterSite from "@assets/outer_site.svg";
 
 import { Image } from "astro:assets";
 
-type Links = {[name in string]: { link: string, important: boolean }};
+type Links = { [name in string]: { link: string; important: boolean } };
 
 const links: Links = {
-    "ホーム": { link: "/", important: false },
-    "works": { link: "/works/", important: false },
-    "タグ": { link: "/tags/", important: true },
-    "blog(工事中)": { link: "/blog/", important: false },
+  ホーム: { link: "/", important: false },
+  works: { link: "/works/", important: false },
+  タグ: { link: "/tags/", important: true },
+  "blog(工事中)": { link: "/blog/", important: false },
 };
 const outer_links: Links = {
-    "github": { link: "https://github.com/KNSN92/", important: true },
+  github: { link: "https://github.com/KNSN92/", important: true },
 };
 ---
 
-<nav class="bg-[#00081f]/70 sm:bg-transparent sticky sm:static top-0 z-50 sm:w-64 w-screen sm:h-screen h-fit pl-8 py-4 sm:py-24 flex sm:flex-col flex-row items-left justify-start gap-4">
-    <a href="/" class="w-fit h-fit">
-        <Image src={MyIcon} alt="my icon" loading="eager" class="w-16 rounded-full" />
-    </a>
-    <ul class="*:mt-4 text-xl flex sm:block gap-4">
-        {Object.entries(links).map(([name, link]) => (
-            <a class={"hover:translate-x-2 hover:underline transition w-fit" + (link.important ? " block" : " hidden sm:block")} href={link.link}>
-                <li><span class="hidden sm:inline">-</span> {name}</li>
-            </a>
-        ))}
-        {Object.entries(outer_links).map(([name, link]) => (
-            <a class={"hover:translate-x-2 hover:underline transition w-fit" + (link.important ? " block" : " hidden sm:block")} href={link.link}>
-                <li><span class="hidden sm:inline">-</span> {name} <Image src={OuterSite} alt="outer site icon" loading="eager" class="inline w-6 relative -top-0.5" /></li>
-            </a>
-        ))}
-    </ul>
-    <div class="h-full" />
-    <p class="text-xl hidden sm:inline">© 2025 KNSN92</p>
+<nav
+  class="bg-[#00081f]/70 sticky sm:static top-0 z-50 sm:w-64 w-screen sm:h-screen h-fit pl-8 py-4 sm:py-24 flex sm:flex-col flex-row items-left justify-start gap-4"
+>
+  <a href="/" class="w-fit h-fit">
+    <Image
+      src={MyIcon}
+      alt="my icon"
+      loading="eager"
+      class="w-16 rounded-full"
+    />
+  </a>
+  <ul class="*:mt-4 text-xl flex sm:block gap-4">
+    {
+      Object.entries(links).map(([name, link]) => (
+        <a
+          class={
+            "hover:translate-x-2 hover:underline transition w-fit" +
+            (link.important ? " block" : " hidden sm:block")
+          }
+          href={link.link}
+        >
+          <li>
+            <span class="hidden sm:inline">-</span> {name}
+          </li>
+        </a>
+      ))
+    }
+    {
+      Object.entries(outer_links).map(([name, link]) => (
+        <a
+          class={
+            "hover:translate-x-2 hover:underline transition w-fit" +
+            (link.important ? " block" : " hidden sm:block")
+          }
+          href={link.link}
+        >
+          <li>
+            <span class="hidden sm:inline">-</span> {name}{" "}
+            <Image
+              src={OuterSite}
+              alt="outer site icon"
+              loading="eager"
+              class="inline w-6 relative -top-0.5"
+            />
+          </li>
+        </a>
+      ))
+    }
+  </ul>
+  <div class="h-full"></div>
+  <p class="text-xl hidden sm:inline">© 2025 KNSN92</p>
 </nav>
