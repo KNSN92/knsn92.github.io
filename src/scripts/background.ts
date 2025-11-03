@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/Addons.js";
+// import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 function setupBackground() {
     const bgCanvas = document.getElementById("bg-canvas")! as HTMLCanvasElement;
@@ -33,34 +33,34 @@ function setupBackground() {
     const sphereGeom = new THREE.SphereGeometry(80);
     const saturnLikePlanet = new THREE.Mesh(sphereGeom, material);
     saturnLikeSys.add(saturnLikePlanet);
-    
+
     let ringGeom;
     let ring;
-    const rings = [] as THREE.Mesh[][];
+    const rings: [THREE.Mesh[], THREE.Mesh[]] = [[], []];
     material = new THREE.MeshPhongMaterial({ color: 0xff00ff, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(150, 200, 45, 1, 0, Math.PI * 1.5);
     ring = new THREE.Mesh(ringGeom, material);
-    rings.push([ring]);
+    rings[0].push(ring);
     saturnLikeSys.add(ring);
     material = new THREE.MeshPhongMaterial({ color: 0x88ff88, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(250, 350, 45, 1, Math.PI * 1.5, Math.PI);
     ring = new THREE.Mesh(ringGeom, material);
-    rings.push([ring]);
+    rings[0].push(ring);
     saturnLikeSys.add(ring);
     material = new THREE.MeshPhongMaterial({ color: 0x88ffff, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(250, 325, 45, 1, Math.PI * 0.75, Math.PI * 0.5);
     ring = new THREE.Mesh(ringGeom, material);
-    rings.at(-1)!.push(ring);
+    rings[0].push(ring);
     saturnLikeSys.add(ring);
     material = new THREE.MeshPhongMaterial({ color: 0xffff88, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(400, 450, 45, 1, Math.PI * 1.25, Math.PI * 0.5);
     ring = new THREE.Mesh(ringGeom, material);
-    rings.push([ring]);
+    rings[1].push(ring);
     saturnLikeSys.add(ring);
     material = new THREE.MeshPhongMaterial({ color: 0xff8888, opacity: 0.8, transparent: true });
     ringGeom = new THREE.RingGeometry(400, 550, 45, 1, Math.PI * 0, Math.PI);
     ring = new THREE.Mesh(ringGeom, material);
-    rings.at(-1)!.push(ring);
+    rings[1].push(ring);
     saturnLikeSys.add(ring);
 
     saturnLikeSys.rotation.x = -0.8;
@@ -90,7 +90,7 @@ function setupBackground() {
             const y = starHeight * (Math.random() - 0.5) * 2;
             const z = -300 - 1600 * (Math.random());
             vertices.push(x, y, z);
-    
+
             const r = Math.random() * 0.5 + 0.5;
             const g = Math.random() * 0.5 + 0.5;
             const b = Math.random() * 0.5 + 0.5;
@@ -148,7 +148,7 @@ function setupBackground() {
     });
     const points = new THREE.Points(bufferGeom, particleMaterial);
     scene.add(points);
-    
+
     let mouseSpeedX = 0;
     let mouseSpeedY = 0;
     let lastX: number;
@@ -201,7 +201,7 @@ function setupBackground() {
 
     window.addEventListener("mousemove", onmove);
     window.addEventListener("touchmove", onmove)
-    
+
     let rotVelX = 0;
     let rotVelY = 0;
 
@@ -216,13 +216,17 @@ function setupBackground() {
         rotVelY = (rotVelY + 0.002) * 0.95 - 0.002;
         // starVelocity = starVelocity.add(new THREE.Vector2(0.005, 0.005)).multiplyScalar(0.99).sub(new THREE.Vector2(0.005, 0.005));
 
-        rings.forEach((ringss, i) => {
-            ringss.forEach((ring) => {
-                const ringGeom = ring.geometry as THREE.RingGeometry;
-                const r = ringGeom.parameters.innerRadius / 100;
-                const speed = 4 / (r * r)
-                ring.rotateZ((rotVelX + rotVelY) * speed * (i % 2 === 0 ? 1 : -1));
-            });
+        rings[0].forEach((ring) => {
+            const ringGeom = ring.geometry as THREE.RingGeometry;
+            const r = ringGeom.parameters.innerRadius / 100;
+            const speed = 4 / (r * r)
+            ring.rotateZ((rotVelX + rotVelY) * speed);
+        });
+        rings[1].forEach((ring) => {
+            const ringGeom = ring.geometry as THREE.RingGeometry;
+            const r = ringGeom.parameters.innerRadius / 100;
+            const speed = -4 / (r * r)
+            ring.rotateZ((rotVelX + rotVelY) * speed);
         });
 
         starOffset = starOffset.add(starVelocity);
