@@ -1,20 +1,18 @@
 ---
-import Hello from "@components/Hello.astro"
-import About from "@components/About.astro"
-import Socials from "@components/Socials.astro"
-import Skills from "@components/Skills.astro"
-import Works from "@components/Works.astro"
-import BaseLayout from "@layouts/BaseLayout.astro"
-import Title from "@components/Title.astro"
+import Hello from "@components/Hello.astro";
+import About from "@components/About.astro";
+import Skills from "@components/Skills.astro";
+import Works from "@components/Works.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Title from "@components/Title.astro";
 ---
 
 <BaseLayout pageTitle="ホーム">
-	<div class="flex flex-col items-center gap-4">
-		<Hello />
-		<About />
-		<Socials />
-		<Skills />
-		<Title>works</Title>
-		<Works />
-	</div>
+  <div class="flex flex-col items-center gap-4">
+    <Hello />
+    <About />
+    <Skills />
+    <Title>works</Title>
+    <Works />
+  </div>
 </BaseLayout>

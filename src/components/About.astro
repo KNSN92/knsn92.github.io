@@ -1,38 +1,61 @@
 ---
-import Title from "./Title.astro"
+import { Image } from "astro:assets";
+import Title from "./Title.astro";
+import SocialIcon from "./SocialIcon.astro";
+
+import GithubIcon from "../assets/github.svg";
 
 const about = [
-	["name", "Kenshin Nakao"],
-	["nickname", "KNSN92 | コんタいナ"],
-	["age", "0x11 ( 17 years )"],
-	["location", "Hyogo, Japan"],
-	["hobby", "Gaming(Minecraft, Factorio, ...)"],
-]
+  ["name", "Kenshin Nakao"],
+  ["nickname", "KNSN92 | コんタいナ"],
+  ["age", "0x11 ( 17 years )"],
+  ["location", "Hyogo, Japan"],
+  ["hobby", "Gaming(Minecraft, Factorio, ...)"],
+];
 ---
 
 <Title>about me</Title>
 <div class="text-left flex flex-col items-center">
-	<div class="flex w-fit space-y-4">
-		<ul>
-			{about.map(([key, _]) => (
-				<li>{key}</li>
-			))}
-		</ul>
-		<ul>
-			{about.map(() => (
-				<li class="w-8 text-center">-</li>
-			))}
-		</ul>
-		<ul>
-			{about.map(([_, value]) => (
-				<li>{value}</li>
-			))}
-		</ul>
-	</div>
-	<p>
-		プログラミングは趣味としてやっています！<br/>
-		最初はjavaから始まり、今ではpythonでツールを作ったり、<br/>
-		typescriptなどを使ってweb開発なども行っています。<br/>
-		現在rustを少しずつ学習中です。結構出来るようになってきた... かも？
-	</p>
+  <div class="flex w-fit space-y-4">
+    <ul>
+      {about.map(([key, _]) => <li>{key}</li>)}
+    </ul>
+    <ul>
+      {about.map(() => <li class="w-8 text-center">-</li>)}
+    </ul>
+    <ul>
+      {about.map(([_, value]) => <li>{value}</li>)}
+    </ul>
+  </div>
+  <p>
+    プログラミングは趣味としてやっています！<br />
+    最初はjavaから始まり、今ではpythonでツールを作ったり、<br />
+    typescriptなどを使ってweb開発なども行っています。<br />
+    現在rustを少しずつ学習中です。結構出来るようになってきた... かも？
+  </p>
+  <!-- <div class="flex gap-1 my-4 items-center justify-center h-12">
+    <SocialIcon
+      image={GithubIcon}
+      url="https://github.com/KNSN92"
+      name="github"
+    />
+  </div> -->
+  <div class="flex flex-wrap gap-2 my-4 justify-center items-start">
+    <a href="https://github.com/KNSN92">
+      <Image
+        src="https://github-readme-stats.vercel.app/api?theme=tokyonight&show_icons=true&username=KNSN92"
+        alt="github status"
+        width="512"
+        height="256"
+      />
+    </a>
+    <a href="https://github.com/KNSN92">
+      <Image
+        src="https://github-readme-stats.vercel.app/api/top-langs/?theme=tokyonight&layout=compact&username=KNSN92"
+        alt="github status"
+        width="384"
+        height="512"
+      />
+    </a>
+  </div>
 </div>
