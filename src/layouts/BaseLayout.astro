@@ -6,10 +6,13 @@ import "../styles/global.css"
 
 interface Props {
 	pageTitle: string;
+	pageType?: "website" | "article" | "blog";
+	description?: string;
 }
-const { pageTitle } = Astro.props;
+const { pageTitle, pageType, description } = Astro.props;
 
 import MyIcon from "@assets/myicon.png";
+import OpenGraph from "@components/OpenGraph.astro";
 ---
 
 <html lang="ja">
@@ -18,6 +21,7 @@ import MyIcon from "@assets/myicon.png";
 		<link rel="icon" type="image/png" href={MyIcon.src} />
 		<meta name="viewport" content="width=device-width initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		<OpenGraph pageTitle={pageTitle} pageType={pageType} description={description} />
 		<title>{pageTitle} | KNSN92's portfolio dayo</title>
 	</head>
 	<body class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden overflow-y-scroll">
