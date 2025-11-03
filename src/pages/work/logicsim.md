@@ -12,6 +12,21 @@ scratchで作った論理回路をシミュレート出来るやつです。下�
 
 ちなみにScratchからGodotで作り直そうとしたこともありましたが、結局頓挫しました。残念ですね。
 
-<div style="max-width: 100vw; width: fit-content; border-radius: 0.5rem; padding: 2rem; margin: 4rem 0; background-color: #222; overflow: scroll;">
-    <iframe src="https://turbowarp.org/752066713/embed?addons=pause,clones&settings-button&clones=Infinity&fps=60" width="512" height="416" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<div style="
+    max-width: 100vw;
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 4rem 0;
+    background-color: #222;
+    overflow: scroll;
+">
+    <iframe
+        src="https://turbowarp.org/752066713/embed?addons=pause,clones&settings-button&clones=Infinity&fps=60"
+        width="512" height="416"
+        allowtransparency="true"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen
+    ></iframe>
 </div>
