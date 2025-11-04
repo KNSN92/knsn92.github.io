@@ -2,12 +2,12 @@
 import Footer from "@components/Footer.astro";
 import Background from "../components/Background.astro";
 import NavBar from "../components/NavBar.astro";
-import "../styles/global.css"
+import "../styles/global.css";
 
 interface Props {
-	pageTitle: string;
-	pageType?: "website" | "article" | "blog";
-	description?: string;
+  pageTitle: string;
+  pageType?: "article" | "blog";
+  description?: string;
 }
 const { pageTitle, pageType, description } = Astro.props;
 
@@ -16,22 +16,24 @@ import OpenGraph from "@components/OpenGraph.astro";
 ---
 
 <html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href={MyIcon.src} />
-		<meta name="viewport" content="width=device-width initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<OpenGraph pageTitle={pageTitle} pageType={pageType} description={description} />
-		<title>{pageTitle} | KNSN92's portfolio dayo</title>
-	</head>
-	<body class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden overflow-y-scroll">
-		<Background />
-		<div class="sm:flex max-w-screen min-h-screen">
-			<NavBar />
-			<div class="px-8 w-full h-fit sm:h-screen sm:overflow-scroll">
-				<slot />
-			</div>
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href={MyIcon.src} />
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <OpenGraph pageTitle={pageTitle} pageType={pageType} />
+    <title>{pageTitle} | KNSN92's portfolio dayo</title>
+  </head>
+  <body
+    class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden overflow-y-scroll"
+  >
+    <Background />
+    <div class="sm:flex max-w-screen min-h-screen">
+      <NavBar />
+      <div class="px-8 w-full h-fit sm:h-screen sm:overflow-scroll">
+        <slot />
+      </div>
+      <Footer />
+    </div>
+  </body>
 </html>

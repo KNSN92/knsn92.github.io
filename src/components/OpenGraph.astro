@@ -4,27 +4,29 @@ import OGPImg from "@assets/ogp.png";
 interface Props {
   pageTitle: string;
   pageType?: "article" | "blog";
-  description?: string;
 }
 
-const { pageTitle, pageType, description } = Astro.props;
+const { pageTitle, pageType } = Astro.props;
 
 const isHome = Astro.url.pathname == "/";
 
 const url = new URL(Astro.url.pathname, Astro.site);
 const img_url = new URL(OGPImg.src, Astro.site);
 
+const description =
+  "KNSN92のポートフォリオです。自己紹介と使えるスキル、これまで作った作品などを載せています。";
+
 console.log(Astro.url.pathname);
 ---
 
-<meta property="og:site_name" content="KNSN92's Portfolio" />
+<meta property="og:site_name" content="KNSN92's portfolio dayo" />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:type" content={isHome ? "website" : pageType} />
 <meta property="og:url" content={url} />
-<meta property="og:description" content={description ?? ""} />
+<meta property="og:description" content={description} />
 <meta property="og:image" content={img_url} />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content={pageTitle} />
-<meta name="twitter:description" content={description ?? ""} />
+<meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={img_url} />
