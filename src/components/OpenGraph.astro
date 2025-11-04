@@ -9,13 +9,13 @@ interface Props {
 
 const { pageTitle, pageType, description } = Astro.props;
 
-console.log(Astro.url);
+console.log(Astro.request.url);
 ---
 
 <meta property="og:site_name" content="KNSN92's Portfolio" />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:type" content={pageType ?? "article"} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={Astro.request.url} />
 <meta property="og:description" content={description ?? ""} />
 <meta property="og:image" content={OGPImg.src} />
 <meta property="og:locale" content="ja_JP" />
