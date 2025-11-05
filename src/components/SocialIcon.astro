@@ -11,7 +11,7 @@ interface Props {
 const { image, url, name } = Astro.props;
 ---
 
-<a href={url} class="block h-full aspect-square">
+<a href={url} class="block h-full aspect-square hover:scale-110">
   <Image
     src={image}
     alt={name}
