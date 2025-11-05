@@ -5,7 +5,7 @@ pubDate: 2025-10-15
 description: 学校の課題で伝統工芸品紹介ページを作らないといけなかったので、有田焼の特徴や歴史を伝える為に作ったサイトです〜!
 tags: ["react", "typescript", "vite", "gsap"]
 thumbnail: arita_ware.png
-github: https://github.com/KNSN92/AritaWareIntroduce
+github: AritaWareIntroduce
 site: https://arita-ware-introduce.vercel.app
 ---
 

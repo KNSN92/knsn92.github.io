@@ -6,7 +6,7 @@ description: 学内のキャンパス内の生徒の位置を探すことがで�
 tags: ["typescript", "tailwind", "react", "nextjs", "prisma", "zod", "nextauth"]
 featured: true
 thumbnail: rocketinst.png
-github: https://github.com/KNSN92/RocketInSt
+github: RocketInSt
 site: https://rocket-in-st.vercel.app
 ---
 

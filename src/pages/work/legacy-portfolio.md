@@ -5,7 +5,7 @@ pubDate: 2025-10-15
 description: 先代のポートフォリオ。
 tags: ["typescript", "tailwind", "react", "nextjs", "gsap"]
 thumbnail: legacy_portfolio.png
-github: https://github.com/KNSN92/legacy.knsn92.github.io
+github: legacy.knsn92.github.io
 site: https://knsn92.github.io/legacy.knsn92.github.io/
 ---
 

@@ -6,7 +6,7 @@ description: Minecraftのログファイルを読み込み、チャット部分�
 featured: true
 tags: ["python", "typescript", "react", "shadcn/ui", "vite"]
 thumbnail: mc_log2chat.png
-github: https://github.com/KNSN92/MC-Log2Chat
+github: MC-Log2Chat
 site: https://knsn92.github.io/MC-Log2Chat
 ---
 

@@ -5,7 +5,7 @@ pubDate: 2025-10-15
 description: pythonっぽいプログラミング言語です。制作途中だけどもう作る気ないよ
 tags: ["java"]
 thumbnail: klang.png
-github: https://github.com/KNSN92/KLang
+github: KLang
 ---
 
 pythonっぽいプログラミング言語です。インデントベースの構造や、タプルなど結構pythonっぽいと私は思っています。

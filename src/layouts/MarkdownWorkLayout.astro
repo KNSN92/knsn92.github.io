@@ -53,14 +53,7 @@ if (frontmatter.thumbnail != null) {
         </h1>
         {
           (frontmatter.github || frontmatter.site) && (
-            <div class="h-8 my-4 flex gap-2">
-              {frontmatter.github && (
-                <SocialIcon
-                  image={GithubIcon}
-                  url={frontmatter.github}
-                  name="github"
-                />
-              )}
+            <div class="h-10 my-4 flex gap-2">
               {frontmatter.site && (
                 <SocialIcon
                   image={LinkIcon}
@@ -74,10 +67,22 @@ if (frontmatter.thumbnail != null) {
         <div class="space-y-4 min-h-48 wrap-normal markdown">
           <slot />
         </div>
-        <div class="flex gap-2">
+        {frontmatter.github && (
+          <a href={`https://github.com/KNSN92/${frontmatter.github}`} class="block w-fit my-4">
+            <Image
+              src={`https://github-readme-stats.vercel.app/api/pin/?theme=tokyonight&username=KNSN92&repo=${frontmatter.github}`}
+              alt="link of github"
+              loading="lazy"
+              
+              width="512"
+              height="256"
+            />
+          </a>
+        )}
+        <div class="flex gap-2 text-xl">
           {frontmatter.tags.map((tag: string) => <Tag tag={tag} link={true} />)}
         </div>
-        <p>公開日: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+        <p class="text-xl">公開日: {frontmatter.pubDate.toString().slice(0, 10)}</p>
       </div>
     </div>
     <Title> 他の作品 </Title>
@@ -89,5 +94,9 @@ if (frontmatter.thumbnail != null) {
   .markdown a {
     color: lightblue;
     text-decoration: underline;
+  }
+
+  .markdown a:hover {
+    color: cornflowerblue;
   }
 </style>
