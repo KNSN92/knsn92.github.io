@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @config "../../tailwind.config.mjs";
+
+.markdown a {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+.markdown a:hover {
+    color: cornflowerblue;
+}
+
+.markdown img {
+    width: 50% !important;
+}

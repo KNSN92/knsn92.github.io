@@ -1,5 +1,5 @@
 ---
-import WorkCard from "@components/WorkCard.astro";
+import Blogs from "@components/Blogs.astro";
 import Works from "@components/Works.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import type { GetStaticPathsResult } from "astro";
@@ -41,18 +41,25 @@ const works = (
   w.frontmatter.tags.includes(tag)
 ));
 
-const thumbnails = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/*.png", { eager: true });
-works.forEach((work) => {
-	if(work.frontmatter.thumbnail == null) return;
-	const thumbnailPath = `/src/assets/works/${work.frontmatter.thumbnail}`;
-	if(!thumbnails[thumbnailPath]) {
-		throw new Error(`Thumbnail ${thumbnailPath} not found`);
-	}
-});
+const blogs = (
+  await Astro.glob("../../pages/blog/*.md")
+)
+.filter((w) => (
+  // exclude files starting with "_"
+  !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
+))
+.filter((w) => (
+  w.frontmatter.tags.includes(tag)
+));
 ---
 
 <BaseLayout pageTitle={`タグ #${tag}`}>
-  <h1 class="my-8 text-center text-4xl font-bold">#{tag} のタグが付けられた作品</h1>
+  {works.length > 0 && (
+    <h1 class="my-8 text-center text-4xl font-bold">#{tag} のタグが付けられた作品</h1>
     <Works works_override={works} />
-  </ul>
+  )}
+  {blogs.length > 0 && (
+    <h1 class="my-8 text-center text-4xl font-bold">#{tag} のタグが付けられたブログ</h1>
+    <Blogs blogs_override={blogs} />
+  )}
 </BaseLayout>

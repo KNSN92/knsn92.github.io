@@ -72,8 +72,7 @@ if (frontmatter.thumbnail != null) {
             <Image
               src={`https://github-readme-stats.vercel.app/api/pin/?theme=tokyonight&username=KNSN92&repo=${frontmatter.github}`}
               alt="link of github"
-              loading="lazy"
-              
+              loading="eager"
               width="512"
               height="256"
             />
@@ -87,16 +86,6 @@ if (frontmatter.thumbnail != null) {
     </div>
     <Title> 他の作品 </Title>
     <div class="h-8"></div>
-    <Works selected_work={frontmatter.title} />
+    <Works selected_card={frontmatter.title} />
   </div>
 </BaseLayout>
-<style is:global>
-  .markdown a {
-    color: lightblue;
-    text-decoration: underline;
-  }
-
-  .markdown a:hover {
-    color: cornflowerblue;
-  }
-</style>

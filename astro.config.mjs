@@ -7,6 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   base: "/",
   site: "https://knsn92.github.io",
+  image: {
+    
+  },
   vite: {
     plugins: [tailwindcss()]
   }

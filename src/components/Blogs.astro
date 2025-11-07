@@ -9,29 +9,27 @@ export interface Work {
 	description: string;
 	tags: string[];
 	thumbnail?: string;
-	github?: string;
-	site?: string;
 };
 
 interface Props {
 	selected_card?: string,
-	works_override?: MarkdownInstance<Record<string, any>>[],
+	blogs_override?: MarkdownInstance<Record<string, any>>[],
 }
 
-const { selected_card, works_override } = Astro.props;
+const { selected_card, blogs_override } = Astro.props;
 
-const works = works_override ?? (
-		await Astro.glob("../pages/work/*.md")
+const works = blogs_override ?? (
+		await Astro.glob("../pages/blog/*.md")
 	)
 	.filter((w) => {
 		// exclude files starting with "_"
 		return !w.file.substring(w.file.lastIndexOf("/") + 1).startsWith("_")
 	});
 
-const thumbnails = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/*.png", { eager: true });
+const thumbnails = import.meta.glob<{ default: ImageMetadata }>("/src/assets/blogs/*.png", { eager: true });
 works.forEach((work) => {
 	if(work.frontmatter.thumbnail == null) return;
-	const thumbnailPath = `/src/assets/works/${work.frontmatter.thumbnail}`;
+	const thumbnailPath = `/src/assets/blogs/${work.frontmatter.thumbnail}`;
 	if(!thumbnails[thumbnailPath]) {
 		throw new Error(`Thumbnail ${thumbnailPath} not found`);
 	}
@@ -49,7 +47,7 @@ const featuredWorks = works.filter((work) => work.frontmatter.featured);
 						title={work.frontmatter.title}
 						thumbnail={
 							work.frontmatter.thumbnail != null ?
-							thumbnails[`/src/assets/works/${work.frontmatter.thumbnail}`].default : null
+							thumbnails[`/src/assets/blogs/${work.frontmatter.thumbnail}`].default : null
 						}
 						description={work.frontmatter.description}
 						tags={work.frontmatter.tags}

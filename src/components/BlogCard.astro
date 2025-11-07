@@ -1,0 +1,35 @@
+---
+import Tag from './Tag.astro';
+
+interface Props {
+  title: string,
+  description: string,
+  tags: string[],
+  pubDate: string,
+}
+
+const {
+  title, description, tags, pubDate
+} = Astro.props;
+console.log(pubDate);
+---
+
+<div
+  class="relative min-w-80 max-w-162 flex flex-col w-80 md:w-[initial] md:flex-row gap-2 select-none group overflow-hidden bg-zinc-800/50"
+>
+  <div
+    class="absolute w-full h-full bg-white opacity-0 pointer-events-none transition group-hover:opacity-20"}
+  >
+  </div>
+  <div class="px-4 md:py-4">
+    <h1 class="text-3xl font-bold inline-block h-10 overflow-hidden">
+      {title}
+    </h1>
+    <p class="text-sm block h-20 overflow-hidden overflow-ellipsis">
+      {description}
+    </p>
+    <div class="h-12 flex flex-wrap justify-start overflow-hidden *:mx-1">
+      {tags && tags.map((tag: string) => <Tag tag={tag} />)}
+    </div>
+  </div>
+</div>
