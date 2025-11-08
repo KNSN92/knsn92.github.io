@@ -7,9 +7,11 @@ import "../styles/global.css";
 interface Props {
   pageTitle: string;
   pageType?: "article" | "blog";
-  description?: string;
 }
-const { pageTitle, pageType, description } = Astro.props;
+const { pageTitle, pageType } = Astro.props;
+
+const description =
+  "KNSN92のポートフォリオです。自己紹介や使えるスキル、これまで作った作品などを載せています。ブログもありますが、ほぼ更新しないと思います多分。あと背景にこだわりましたヨ。";
 
 import MyIcon from "@assets/myicon.png";
 import OpenGraph from "@components/OpenGraph.astro";
@@ -21,7 +23,12 @@ import OpenGraph from "@components/OpenGraph.astro";
     <link rel="icon" type="image/png" href={MyIcon.src} />
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <OpenGraph pageTitle={pageTitle} pageType={pageType} />
+    <meta name="description" content={description} />
+    <OpenGraph
+      pageTitle={pageTitle}
+      pageType={pageType}
+      description={description}
+    />
     <title>{pageTitle} | KNSN92's portfolio dayo</title>
   </head>
   <body

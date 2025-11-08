@@ -4,18 +4,15 @@ import OGPImg from "@assets/ogp.png";
 interface Props {
   pageTitle: string;
   pageType?: "article" | "blog";
+  description: string;
 }
 
-const { pageTitle, pageType } = Astro.props;
+const { pageTitle, pageType, description } = Astro.props;
 
 const isHome = Astro.url.pathname == "/";
 
 const url = new URL(Astro.url.pathname, Astro.site);
 const img_url = new URL(OGPImg.src, Astro.site);
-
-const description =
-  "KNSN92のポートフォリオです。自己紹介と使えるスキル、これまで作った作品などを載せています。ブログは更新しないので永久に工事中です。多分。背景にこだわりましたヨ。";
-
 ---
 
 <meta property="og:site_name" content="KNSN92's portfolio dayo" />
