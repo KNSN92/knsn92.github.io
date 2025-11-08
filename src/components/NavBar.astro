@@ -10,7 +10,7 @@ const links: Links = {
   ホーム: { link: "/", important: false },
   works: { link: "/works/", important: false },
   タグ: { link: "/tags/", important: true },
-  "blog": { link: "/blog/", important: false },
+  blog: { link: "/blog/", important: false },
 };
 const outer_links: Links = {
   github: { link: "https://github.com/KNSN92/", important: true },
@@ -31,29 +31,27 @@ const outer_links: Links = {
   <ul class="*:mt-4 text-xl flex sm:block gap-4">
     {
       Object.entries(links).map(([name, link]) => (
-        <a
+        <li
           class={
             "hover:translate-x-2 hover:underline transition w-fit" +
             (link.important ? " block" : " hidden sm:block")
           }
-          href={link.link}
         >
-          <li>
+          <a href={link.link}>
             <span class="hidden sm:inline">-</span> {name}
-          </li>
-        </a>
+          </a>
+        </li>
       ))
     }
     {
       Object.entries(outer_links).map(([name, link]) => (
-        <a
+        <li
           class={
             "hover:translate-x-2 hover:underline transition w-fit" +
             (link.important ? " block" : " hidden sm:block")
           }
-          href={link.link}
         >
-          <li>
+          <a href={link.link}>
             <span class="hidden sm:inline">-</span> {name}{" "}
             <Image
               src={OuterSite}
@@ -61,8 +59,8 @@ const outer_links: Links = {
               loading="eager"
               class="inline w-6 relative -top-0.5"
             />
-          </li>
-        </a>
+          </a>
+        </li>
       ))
     }
   </ul>
