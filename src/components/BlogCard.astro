@@ -1,24 +1,22 @@
 ---
-import Tag from './Tag.astro';
+import Tag from "./Tag.astro";
 
 interface Props {
-  title: string,
-  description: string,
-  tags: string[],
-  pubDate: string,
+  title: string;
+  description: string;
+  tags: string[];
+  pubDate: string;
 }
 
-const {
-  title, description, tags, pubDate
-} = Astro.props;
-console.log(pubDate);
+const { title, description, tags, pubDate } = Astro.props;
 ---
 
 <div
   class="relative min-w-80 max-w-162 flex flex-col w-80 md:w-[initial] md:flex-row gap-2 select-none group overflow-hidden bg-zinc-800/50"
 >
   <div
-    class="absolute w-full h-full bg-white opacity-0 pointer-events-none transition group-hover:opacity-20"}
+    class="absolute w-full h-full bg-white opacity-0 pointer-events-none transition group-hover:opacity-20"
+    }
   >
   </div>
   <div class="px-4 md:py-4">
