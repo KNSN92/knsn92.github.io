@@ -168,8 +168,8 @@ export function setupBackground(can_control: boolean) {
             out vec4 outColor;
 
             void main() {
-                if(mod(pos.x, 600.0) < 5.0 || mod(pos.y + time, 600.0) < 5.0) {
-                    outColor = vec4(0.5, 0.25, 0.75, (pos.y - 1000.0) / -5000.0);
+                if(mod(pos.x, 300.0) < 5.0 || mod(pos.y + time, 300.0) < 5.0) {
+                    outColor = vec4(0.8, 0.25, 1.0, (pos.y - 1000.0) / -5000.0);
                 }else {
                     outColor = vec4(0.0, 0.0, 0.0, 0.0);
                 }
@@ -268,7 +268,7 @@ export function setupBackground(can_control: boolean) {
         starOffset = starOffset.add(starVelocity);
         particleMaterial.uniforms["offset"] = { value: starOffset }
 
-        gridOffset += 2.5 + (rotVelX + rotVelY) * 50;
+        gridOffset += 1.5 + (rotVelX + rotVelY) * 50;
         gridMaterial.uniforms["time"] = { value: gridOffset };
 
         renderer.render(scene, camera);
