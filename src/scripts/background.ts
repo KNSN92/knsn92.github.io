@@ -1,7 +1,6 @@
 import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-function setupBackground() {
+export function setupBackground(can_control: boolean) {
     const bgCanvas = document.getElementById("bg-canvas")! as HTMLCanvasElement;
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -14,9 +13,13 @@ function setupBackground() {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x00081f);
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000);
     camera.position.set(0, 0, 600);
-    // const controls = new OrbitControls(camera, document.documentElement);
+    if(can_control) {
+        import("three/examples/jsm/Addons.js").then(({ OrbitControls }) => {
+            new OrbitControls(camera, document.querySelector("main")!);
+        });
+    }
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1);
@@ -81,14 +84,14 @@ function setupBackground() {
     const starHeight = height * 3;
 
     function genStarParticles() {
-        const len = Math.min(starWidth / 6 + starHeight / 4, 50000);
+        const len = Math.min(starWidth / 6 + starHeight / 4, 50);
         let vertices: number[] = [];
         let colors: number[] = [];
         let comet: number[] = [];
         for(let i = 0; i < len; i++) {
             const x = starWidth * (Math.random() - 0.5) * 2;
             const y = starHeight * (Math.random() - 0.5) * 2;
-            const z = -300 - 1600 * (Math.random());
+            const z = -800 - 600 * (Math.random());
             vertices.push(x, y, z);
 
             const r = Math.random() * 0.5 + 0.5;
@@ -131,7 +134,7 @@ function setupBackground() {
                 vec3 newPosition = position + vec3(offset * comet * (depth * -0.0025) * 1.5, 0);
                 newPosition = vec3(mod(newPosition.x, viewport.x), mod(newPosition.y, viewport.y), newPosition.z) - vec3(viewport.x * 0.5, viewport.y * 0.5, 0.0);
                 gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-                gl_PointSize = depth * 0.00005;
+                gl_PointSize = depth * 0.000005;
                 vColor = color;
             }
         `,
@@ -141,7 +144,7 @@ function setupBackground() {
 
             out vec4 outColor;
             void main() {
-                outColor = vec4(vColor * (1.0 - depth * 0.000001), 1.0);
+                outColor = vec4(vColor, 1.0);
             }
         `,
         glslVersion: THREE.GLSL3
@@ -149,12 +152,45 @@ function setupBackground() {
     const points = new THREE.Points(bufferGeom, particleMaterial);
     scene.add(points);
 
+    const gridGeom = new THREE.PlaneGeometry(15000, 5000, 25, 25);
+    const gridMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+            varying vec3 pos;
+
+            void main() {
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                pos = position;
+            }
+        `,
+        fragmentShader: `
+            uniform float time;
+            varying vec3 pos;
+            out vec4 outColor;
+
+            void main() {
+                if(mod(pos.x, 600.0) < 5.0 || mod(pos.y + time, 600.0) < 5.0) {
+                    outColor = vec4(0.5, 0.25, 0.75, (pos.y - 1000.0) / -5000.0);
+                }else {
+                    outColor = vec4(0.0, 0.0, 0.0, 0.0);
+                }
+            }
+        `,
+        glslVersion: THREE.GLSL3,
+        transparent: true,
+    });
+    const grid = new THREE.Mesh(gridGeom, gridMaterial);
+    grid.rotation.x = -Math.PI / 3;
+    grid.position.z = -2000;
+    grid.position.y = -200;
+    scene.add(grid);
+
     let mouseSpeedX = 0;
     let mouseSpeedY = 0;
     let lastX: number;
     let lastY: number;
     let starOffset = new THREE.Vector2(0, 0);
-    let starVelocity = new THREE.Vector2(Math.random() * 0.02, Math.random() * 0.02);
+    let starVelocity = new THREE.Vector2(0, 0);
+    let gridOffset = 0;
 
     function refreshCanvasSize() {
         width = window.innerWidth;
@@ -163,7 +199,7 @@ function setupBackground() {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
 
-        starVelocity = new THREE.Vector2(Math.random() * 0.02, Math.random() * 0.02);
+        starVelocity = new THREE.Vector2(Math.random() * 0.005, Math.random() * 0.005);
         particleMaterial.uniforms["viewport"] = { value: new THREE.Vector2(starWidth, starHeight) };
         genStarParticles();
     }
@@ -191,7 +227,7 @@ function setupBackground() {
         lastX = currentX;
         lastY = currentY;
 
-        let input = new THREE.Vector2(-mouseSpeedX, mouseSpeedY).multiplyScalar(0.05);
+        let input = new THREE.Vector2(-mouseSpeedX, mouseSpeedY).multiplyScalar(0.01);
         const input_len = input.length();
         const star_vel_len = starVelocity.length();
         const diff = (input_len * star_vel_len > 0) ? input.dot(starVelocity) / (input_len * star_vel_len) : 0;
@@ -232,9 +268,10 @@ function setupBackground() {
         starOffset = starOffset.add(starVelocity);
         particleMaterial.uniforms["offset"] = { value: starOffset }
 
+        gridOffset += 2.5 + (rotVelX + rotVelY) * 50;
+        gridMaterial.uniforms["time"] = { value: gridOffset };
+
         renderer.render(scene, camera);
         requestAnimationFrame(tick);
     }
 }
-
-setupBackground();

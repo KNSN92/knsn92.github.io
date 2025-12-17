@@ -1,4 +1,8 @@
 ---
+const controlable: boolean = Astro.url.pathname.endsWith("/startoy");
 ---
 <canvas id="bg-canvas" class="-z-10 fixed inset-0 w-screen h-screen bg-black" />
-<script src="../scripts/background.ts" />
+<script>
+  import { setupBackground } from "src/scripts/background";
+  setupBackground(window.location.pathname.includes("/startoy"));
+</script>
