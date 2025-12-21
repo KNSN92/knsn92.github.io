@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.mjs";
 
+@theme {
+    --color-navy-bg: #00081fb2;
+}
+
 .markdown a {
     color: lightblue;
     text-decoration: underline;
