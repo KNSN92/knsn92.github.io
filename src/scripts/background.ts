@@ -1,4 +1,14 @@
 import * as THREE from "three";
+import {
+    EffectComposer,
+    GlitchPass,
+    RenderPass,
+    RGBShiftShader,
+    ShaderPass,
+    UnrealBloomPass,
+    VignetteShader,
+    BloomPass
+} from "three/addons/Addons.js";
 
 export function setupBackground(can_control: boolean) {
     const bgCanvas = document.getElementById("bg-canvas")! as HTMLCanvasElement;
@@ -16,7 +26,7 @@ export function setupBackground(can_control: boolean) {
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000);
     camera.position.set(0, 0, 600);
     if(can_control) {
-        import("three/examples/jsm/Addons.js").then(({ OrbitControls }) => {
+        import("three/addons/controls/OrbitControls.js").then(({ OrbitControls }) => {
             new OrbitControls(camera, document.querySelector("main")!);
         });
     }
@@ -167,12 +177,17 @@ export function setupBackground(can_control: boolean) {
             varying vec3 pos;
             out vec4 outColor;
 
+            const float g = 300.0;
+            const float pi = 3.14159265358979;
+
             void main() {
-                if(mod(pos.x, 300.0) < 5.0 || mod(pos.y + time, 300.0) < 5.0) {
-                    outColor = vec4(0.8, 0.25, 1.0, (pos.y - 1000.0) / -5000.0);
+                float alpha = 0.0;
+                if(mod(pos.x, g) < 5.0 || mod(pos.y + time, g) < 5.0) {
+                    alpha = (pos.y / 2.5 - 1000.0) / -2000.0;
                 }else {
-                    outColor = vec4(0.0, 0.0, 0.0, 0.0);
+                    alpha = 0.0;
                 }
+                outColor = vec4(0.8, 0.25, 1.0, alpha);
             }
         `,
         glslVersion: THREE.GLSL3,
@@ -181,7 +196,7 @@ export function setupBackground(can_control: boolean) {
     const grid = new THREE.Mesh(gridGeom, gridMaterial);
     grid.rotation.x = -Math.PI / 3;
     grid.position.z = -2000;
-    grid.position.y = -200;
+    grid.position.y = -600;
     scene.add(grid);
 
     let mouseSpeedX = 0;
@@ -191,21 +206,6 @@ export function setupBackground(can_control: boolean) {
     let starOffset = new THREE.Vector2(0, 0);
     let starVelocity = new THREE.Vector2(0, 0);
     let gridOffset = 0;
-
-    function refreshCanvasSize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-
-        starVelocity = new THREE.Vector2(Math.random() * 0.005, Math.random() * 0.005);
-        particleMaterial.uniforms["viewport"] = { value: new THREE.Vector2(starWidth, starHeight) };
-        genStarParticles();
-    }
-
-    window.addEventListener("DOMContentLoaded", refreshCanvasSize);
-    window.addEventListener("resize", refreshCanvasSize);
 
     function onmove(e: MouseEvent | TouchEvent) {
         function getPos(e: MouseEvent | TouchEvent) {
@@ -241,6 +241,37 @@ export function setupBackground(can_control: boolean) {
     let rotVelX = 0;
     let rotVelY = 0;
 
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const vignettePass = new ShaderPass(VignetteShader);
+    vignettePass.uniforms["offset"].value = -1.5;
+    vignettePass.uniforms["darkness"].value = 1.01;
+    // composer.addPass(vignettePass);
+    composer.addPass(new UnrealBloomPass(new THREE.Vector2(width, height), 0.4, 0.1, 0.1));
+    const rgbshiftPass = new ShaderPass(RGBShiftShader);
+    rgbshiftPass.uniforms["amount"].value = 0.001;
+    rgbshiftPass.uniforms["angle"].value = Math.PI / 4;
+    // composer.addPass(rgbshiftPass);
+    composer.setPixelRatio(window.devicePixelRatio);
+    composer.setSize(width, height);
+
+    function refreshCanvasSize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        renderer.setSize(width, height);
+        composer.setSize(width, height);
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        starVelocity = new THREE.Vector2(Math.random() * 0.005, Math.random() * 0.005);
+        particleMaterial.uniforms["viewport"] = { value: new THREE.Vector2(starWidth, starHeight) };
+        genStarParticles();
+    }
+
+    window.addEventListener("DOMContentLoaded", refreshCanvasSize);
+    window.addEventListener("resize", refreshCanvasSize);
+
     tick();
 
     function tick() {
@@ -271,7 +302,7 @@ export function setupBackground(can_control: boolean) {
         gridOffset += 1.5 + (rotVelX + rotVelY) * 50;
         gridMaterial.uniforms["time"] = { value: gridOffset };
 
-        renderer.render(scene, camera);
+        composer.render();
         requestAnimationFrame(tick);
     }
 }
