@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import WorksSection from "@components/Works.astro";
+import Title from "@components/Title.astro";
 ---
 
 <BaseLayout pageTitle="works">
-  <h1 class="block w-fit text-5xl font-bold mx-auto py-8">Works</h1>
-  <WorksSection />
+  <div class="bg-navy-bg">
+    <Title>Works</Title>
+    <WorksSection />
+  </div>
 </BaseLayout>
