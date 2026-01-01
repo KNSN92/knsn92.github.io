@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: Latest Music Discs Mod
 pubDate: 2025-10-15
 description: minecraft 1.7.10に最新のレコードを追加するminecraftのmodです。
-tags: ["java", "minecraft", "minecraft-forge"]
+tags: ["java \ue738", "minecraft \udb80\udf73", "minecraft-forge"]
 thumbnail: latest_music_discs.png
 github: LatestMusicDiscs
 ---

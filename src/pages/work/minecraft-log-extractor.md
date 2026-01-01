@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: MC Log Extractor
 pubDate: 2025-10-24
 description: minecraft java版のログファイル(ゲームディレクトリのlogsファイルの中のやつ)からチャット履歴を取り出すツール
-tags: ["python"]
+tags: ["python \ue73c"]
 thumbnail: minecraft_log_extractor.png
 ---
 

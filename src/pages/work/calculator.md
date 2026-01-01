@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: 電卓
 pubDate: 2025-10-20
 description: 式から計算できる少し高度な電卓です。数学関数等も少し扱えます。
-tags: ["java"]
+tags: ["java \ue738"]
 thumbnail: calculator.png
 ---
 

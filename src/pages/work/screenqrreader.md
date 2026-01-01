@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: ScreenQRReader
 pubDate: 2025-10-15
 description: 画面上のQRコードを読み取る事が出来るアプリケーションです。
-tags: ["python", "pyobjc", "opencv"]
+tags: ["python \ue73c", "pyobjc", "opencv \ue854"]
 thumbnail: screen_qr_reader.png
 github: ScreenQRReader-Python
 ---

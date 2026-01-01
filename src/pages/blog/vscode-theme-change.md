@@ -4,7 +4,7 @@ title: VSCodeのテーマ変えてみた
 description: 良いのか悪いのか...
 thumbnail: vscode_theme_change.png
 pubDate: 2025-11-7
-tags: ["vscode"]
+tags: ["vscode \ue8da"]
 featured: true
 ---
 

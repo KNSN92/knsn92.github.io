@@ -15,12 +15,14 @@ const description =
 
 import MyIcon from "@assets/myicon.png";
 import OpenGraph from "@components/OpenGraph.astro";
+import { Font } from "astro:assets";
 ---
 
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href={MyIcon.src} />
+    <Font cssVariable="--font-nerdsymbols" preload />
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />

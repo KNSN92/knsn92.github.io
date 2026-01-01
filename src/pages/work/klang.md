@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: KLang
 pubDate: 2025-10-15
 description: pythonっぽいプログラミング言語です。制作途中だけどもう作る気ないよ
-tags: ["java"]
+tags: ["java \ue738"]
 thumbnail: klang.png
 github: KLang
 ---

@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: 有田焼紹介サイト
 pubDate: 2025-10-15
 description: 学校の課題で伝統工芸品紹介ページを作らないといけなかったので、有田焼の特徴や歴史を伝える為に作ったサイトです〜!
-tags: ["react", "typescript", "vite", "gsap"]
+tags: ["react \ue7ba", "typescript \ue8ca", "vite \ue8d7", "gsap"]
 thumbnail: arita_ware.png
 github: AritaWareIntroduce
 site: https://arita-ware-introduce.vercel.app

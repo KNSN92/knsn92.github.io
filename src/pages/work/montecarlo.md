@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: モンテカルロ法
 pubDate: 2025-10-31
 description: モンテカルロ法を使用して大まかな円周率を計算できます。
-tags: ["java"]
+tags: ["java \ue738"]
 thumbnail: montecarlo.png
 ---
 

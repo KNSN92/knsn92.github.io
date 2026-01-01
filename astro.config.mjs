@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -12,5 +12,21 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()]
+  },
+  experimental: {
+    fonts: [
+      {
+        provider: "local",
+        name: "NerdSymbols",
+        cssVariable: "--font-nerdsymbols",
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/SymbolsNerdFont-Regular.ttf"]
+          }
+        ]
+      }
+    ]
   }
 });

@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: Old BC Contents Mod
 pubDate: 2025-10-15
 description: BuildCraftの古いバージョンの隣のチェストからアイテムを取り込める全自動作業台と木パイプに接続できる木エンジンを1.7.10に復活させるmodです。
-tags: ["java", "minecraft", "minecraft-forge"]
+tags: ["java \ue738", "minecraft \udb80\udf73", "minecraft-forge"]
 thumbnail: old_bc_contents.png
 ---
 

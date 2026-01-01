@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: このポートフォリオ
 pubDate: 2025-10-20
 description: このポートフォリオの事だよ。
-tags: ["astro", "typescript", "three.js"]
+tags: ["astro \ue735", "typescript \ue8ca", "tailwind \ue8ba", "three.js \ue8c1"]
 github: knsn92.github.io
 ---
 

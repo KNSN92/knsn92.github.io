@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: NullItems
 pubDate: 2025-11-5
 description: 紫と黒のテクスチャ未指定の要素に現れるあのテクスチャの力を使い(設定)、便利なツールやアイテムなどを追加するmodです。
-tags: ["java", "minecraft", "minecraft-forge"]
+tags: ["java \ue738", "minecraft \udb80\udf73", "minecraft-forge"]
 thumbnail: null_items.png
 # TODO: サムネを新しくする
 ---

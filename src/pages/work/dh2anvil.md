@@ -4,7 +4,7 @@ title: dh2anvil
 pubDate: 2025-10-10
 description: MinecraftのDistant Horizons modのLodデータをAnvil形式に変換するコマンドラインツールです。
 featured: true
-tags: ["rust", "serde"]
+tags: ["rust \ue7a8", "serde"]
 thumbnail: dh2anvil.png
 github: DH2Anvil
 ---

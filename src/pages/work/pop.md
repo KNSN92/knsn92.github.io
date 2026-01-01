@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: 本のPop
 pubDate: 2025-10-24
 description: キャンパスにある「本の凄さ」を紹介するPopポスターです!
-tags: ["illustrator"]
+tags: ["illustrator \ue7b4"]
 thumbnail: pop.png
 ---
 

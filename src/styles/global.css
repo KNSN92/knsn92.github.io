@@ -5,12 +5,16 @@
     --color-navy-bg: #00081fb2;
 }
 
-.markdown a {
+* {
+    font-family: sans-serif, var(--font-nerdsymbols);
+} 
+
+.markdown a, .text-link {
     color: lightblue;
     text-decoration: underline;
 }
 
-.markdown a:hover {
+.markdown a:hover, .text-link:hover {
     color: cornflowerblue;
 }
 
