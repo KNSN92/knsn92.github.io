@@ -30,7 +30,7 @@ for (const tag of all_tags) {
           .sort()
           .map((tag) => (
             <li class="py-1 lg:py-2w w-fit text-2xl text-nowrap px-2">
-              <a href={`/tag/${tag.replace("/", "-")}`} class="underline">
+              <a href={`/tag/${tag.replace("/", "-")}`} class="underline hover:text-blue-400">
                 #{tag}
               </a>{" "}
               - {tags[tag]}ページ
