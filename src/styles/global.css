@@ -20,4 +20,27 @@
 
 .markdown img {
     width: 50% !important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.markdown h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.markdown h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.markdown h3 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
