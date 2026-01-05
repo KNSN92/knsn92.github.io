@@ -8,7 +8,13 @@ export default defineConfig({
   base: "/",
   site: "https://knsn92.github.io",
   image: {
-    
+
+  },
+  markdown: {
+    shikiConfig: {
+      theme: "tokyo-night",
+    },
+    syntaxHighlight: "shiki",
   },
   vite: {
     plugins: [tailwindcss()]

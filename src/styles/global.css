@@ -7,7 +7,7 @@
 
 * {
     font-family: sans-serif, var(--font-nerdsymbols);
-} 
+}
 
 .markdown a, .text-link {
     color: lightblue;
@@ -43,4 +43,26 @@
     font-weight: bold;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+pre.astro-code {
+    border-radius: 1rem;
+}
+
+.markdown code {
+    display: flex;
+    flex-direction: column;
+    counter-reset: code-line;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.markdown code .line::before {
+    display: inline-block;
+    min-width: 2em;
+    margin-right: 1em;
+    box-sizing: border-box;
+    text-align: right;
+    content: counter(code-line);
+    counter-increment: code-line;
 }
