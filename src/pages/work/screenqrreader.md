@@ -5,7 +5,7 @@ pubDate: 2026-1-7
 description: 画面上のQRコードを読み取る事が出来るアプリケーションです。
 tags: ["rust \ue7a8", "tauri \ue8bb", "zbar"]
 thumbnail: screen_qr_reader.png
-github: ScreenQRReader-Python
+github: ScreenQRReader
 ---
 
 画面上のQRコードを読み取る事が出来るアプリケーションです。読み取ったQRコードがURLの場合は自動でブラウザを開く設定やグローバルなショートカットキーを設定できる機能もあります。
