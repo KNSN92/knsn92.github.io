@@ -7,10 +7,10 @@ const { tag, link } = Astro.props;
 ---
 {
   link ? (
-    <a href={`/tag/${tag.replace("/", "-")}`} class="underline hover:text-blue-400">
+    <a href={`/tag/${tag.replace("/", "-")}`} class="underline whitespace-nowrap hover:text-blue-400">
       #{tag}
     </a>
   ) : (
-    <span class="underline">#{tag}</span>
+    <span class="underline whitespace-nowrap">#{tag}</span>
   )
 }
