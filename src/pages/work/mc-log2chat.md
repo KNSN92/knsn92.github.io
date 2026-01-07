@@ -4,7 +4,7 @@ title: MC Log2Chat
 pubDate: 2025-10-10
 description: Minecraftのログファイルを読み込み、チャット部分を抽出して見やすく表示するWebアプリケーションです。
 featured: true
-tags: ["python \ue73c", "typescript \ue8ca", "react \ue7ba", "shadcn/ui", "vite \ue8d7"]
+tags: ["minecraft \udb80\udf73", "python \ue73c", "typescript \ue8ca", "react \ue7ba", "shadcn/ui", "vite \ue8d7"]
 thumbnail: mc_log2chat.png
 github: MC-Log2Chat
 site: https://knsn92.github.io/MC-Log2Chat

@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: 2代目mc鯖監視Bot
 pubDate: 2025-10-15
 description: minecraftのサーバーのプレイヤーの入退出を通知するdiscordのbotです。
-tags: ["python \ue73c", "discordpy \uf1ff"]
+tags: ["minecraft \udb80\udf73", "python \ue73c", "discordpy \uf1ff"]
 thumbnail: mc_bot_remake.png
 github: MCServerWatchingBotRemake
 ---
