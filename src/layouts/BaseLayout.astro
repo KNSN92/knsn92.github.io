@@ -34,12 +34,12 @@ import { Font } from "astro:assets";
     <title>{pageTitle} | KNSN92's portfolio dayo</title>
   </head>
   <body
-    class="bg-black text-white max-w-screen min-h-screen overflow-x-hidden overflow-y-scroll"
+    class="bg-black text-white w-screen min-h-screen overflow-x-hidden overflow-y-scroll"
   >
     <Background />
-    <div class="sm:flex max-w-screen min-h-screen">
+    <div class="flex not-sm:flex-col w-screen min-h-screen">
       <NavBar />
-      <main class="*:px-8 w-full h-fit sm:h-screen sm:overflow-scroll">
+      <main class="*:px-8 w-full h-fit grow sm:h-screen sm:overflow-scroll">
         <slot />
       </main>
       <Footer />
