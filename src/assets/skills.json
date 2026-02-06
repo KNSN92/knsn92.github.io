@@ -8,7 +8,8 @@
 		"java",
 		"nodejs",
 		"bun",
-		"rust"
+		"rust",
+		"sqlite"
 	],[
 		"git",
 		"npm",
@@ -29,11 +30,11 @@
 		"threejs"
 	], [
 		"vscode",
+		"docker",
 		"idea",
 		"pycharm",
 		"eclipse",
-		"godot",
-		"arduino"
+		"godot"
 	], [
 		"ai",
 		"ps",
@@ -41,6 +42,8 @@
 		"vercel"
 	], [
 		"apple",
-		"windows"
+		"windows",
+		"arduino",
+		"raspberrypi"
 	]
 ]
