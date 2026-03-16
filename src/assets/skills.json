@@ -9,7 +9,8 @@
 		"nodejs",
 		"bun",
 		"rust",
-		"sqlite"
+		"sqlite",
+		"md"
 	],[
 		"git",
 		"npm",
@@ -27,14 +28,16 @@
 		"django",
 		"opencv",
 		"sklearn",
-		"threejs"
+		"threejs",
+		"fastapi"
 	], [
 		"vscode",
 		"docker",
 		"idea",
 		"pycharm",
 		"eclipse",
-		"godot"
+		"godot",
+		"figma"
 	], [
 		"ai",
 		"ps",
