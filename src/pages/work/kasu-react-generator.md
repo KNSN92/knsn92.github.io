@@ -6,6 +6,7 @@ description: 変なノリ、変な動画を生成出来るサイト。
 tags: ["typescript \ue8ca", "react \ue7ba", "shadcn/ui", "vite \ue8d7", "mediabunny"]
 thumbnail: kasu_react_generator.png
 github: Kasu-React-Generator
+site: https://knsn92.github.io/Kasu-React-Generator/
 ---
 
 マジで謎な動画を生成出来るサイトです。
