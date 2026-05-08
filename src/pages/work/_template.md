@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/MarkdownWorkLayout.astro
 title: テンプレ
-pubDate: 2025-11-5
+pubDate: 2026-5-8
 description: テンプレだよ。飛んでも404だよ
 tags: []
 thumbnail: dh2anvil.png
-github: https://github.com/KNSN92/
+github: FooBar
 ---
 
 これはテンプレートだよ
