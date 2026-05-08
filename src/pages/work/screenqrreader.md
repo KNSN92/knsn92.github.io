@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownWorkLayout.astro
 title: ScreenQRReader
 pubDate: 2026-1-7
 description: 画面上のQRコードを読み取る事が出来るアプリケーションです。
-tags: ["rust \ue7a8", "tauri \ue8bb", "zbar"]
+tags: ["typescript \ue8ca", "tailwind \ue8ba", "react \ue7ba", "rust \ue7a8", "tauri \ue8bb", "zbar"]
 thumbnail: screen_qr_reader.png
 github: ScreenQRReader
 ---
