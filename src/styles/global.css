@@ -9,60 +9,16 @@
     font-family: sans-serif, var(--font-nerdsymbols);
 }
 
-.markdown a, .text-link {
+.text-link {
     color: lightblue;
     text-decoration: underline;
 }
 
-.markdown a:hover, .text-link:hover {
+.text-link:hover {
     color: cornflowerblue;
 }
 
-.markdown img {
-    width: 50% !important;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+.markdown > h2 {
+    font-size: var(--text-3xl);
 }
 
-.markdown h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.markdown h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.markdown h3 {
-    font-size: 1.75rem;
-    font-weight: bold;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-pre.astro-code {
-    border-radius: 1rem;
-}
-
-.markdown code {
-    display: flex;
-    flex-direction: column;
-    counter-reset: code-line;
-    padding: 0.5rem;
-    box-sizing: border-box;
-}
-
-.markdown code .line::before {
-    display: inline-block;
-    min-width: 2em;
-    margin-right: 1em;
-    box-sizing: border-box;
-    text-align: right;
-    content: counter(code-line);
-    counter-increment: code-line;
-}
