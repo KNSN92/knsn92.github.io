@@ -6,7 +6,7 @@ description: 学校の課題で伝統工芸品紹介ページを作らないと�
 tags: ["react \ue7ba", "typescript \ue8ca", "vite \ue8d7", "gsap"]
 thumbnail: arita_ware.png
 github: AritaWareIntroduce
-site: https://arita-ware-introduce.vercel.app
+site: https://knsn92.github.io/AritaWareIntroduce/
 ---
 
 学校の課題で伝統工芸品紹介ページを作らないといけなかったので、有田焼の特徴や歴史を伝える為に作ったサイトです〜! gsapというアニメーションライブラリを多用することで様々なスクロール効果を詰め込みました。画像は全てフリーのライセンスが付与された物から取ってきています。
